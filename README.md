@@ -1,9 +1,13 @@
-#
-A markov-chain generator using the works of Neil Gaiman and H.P. Lovecraft
+# Markov Tarot
+A markov-chain generator using the works of various authors.
+
+#### Purpose:
+I wanted to create something that would use markov chains to create various "characters" that would speak in various tones and styles, maybe even offer up predictions. This project has come from my various loves of certain authors, as well as a desire to try out markov chain creation. My hope is that the "characters" will speak in a way that creates the impression of particular personalities.
+
 
 ### Source Texts
 
-# The Bard:
+# The Shaman:
 [Click Clack the Rattlebag by Neil Gaiman](http://www.telegraph.co.uk/culture/hay-festival/11603446/Neil-Gaiman-Click-clack-the-Rattlebag.html)
 
 # The Shaggoth
