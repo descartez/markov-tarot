@@ -17,3 +17,5 @@ I wanted to create something that would use markov chains to create various "cha
 # The Shaggoth
 [At the Mountains of Madness](http://www.hplovecraft.com/writings/texts/fiction/mm.aspx) by H.P. Lovecraft
 
+[Herbert West, Reanimator](http://www.hplovecraft.com/writings/texts/fiction/hwr.aspx) by H.P. Lovecraft
+
