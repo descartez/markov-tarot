@@ -2,6 +2,8 @@ import markovify
 import os
 import re
 import spacy
+import tweepy
+from secrets import *
 
 # implements less naive language processing with spaCy
 nlp = spacy.load("en")
@@ -52,6 +54,9 @@ class Character:
 
     def return_tweet(self):
         return self.model.make_short_sentence(140)
+
+
+
 
 lovecraft = Character()
 lovecraft.create_bio("H.P. Lovecraft", "A xenophobic creepy writer.")
