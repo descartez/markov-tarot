@@ -1,9 +1,32 @@
+# for language processing
 import markovify
 import os
 import re
 import spacy
+
+
+#------------------------------------------
+# TWITTER BOT
+#------------------------------------------
+
+# for twitter bot
 import tweepy
 from secrets import *
+
+# begins twitter bot auth
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+
+auth.set_access_token(access_token, access_secret)
+api = tweepy.API(auth)
+
+try:
+    redirect_url = auth.get_authorization_url()
+except tweepy.TweepError:
+    print 'Error! Failed to get request token.'
+
+#------------------------------------------
+# LANGUAGE PROCESSING
+#------------------------------------------
 
 # implements less naive language processing with spaCy
 nlp = spacy.load("en")
@@ -15,6 +38,10 @@ class POSifiedText(markovify.Text):
     def word_join(self, words):
         sentence = " ".join(word.split("::")[0] for word in words)
         return sentence
+
+#------------------------------------------
+# AUTHOR/CHARACTER CLASS
+#------------------------------------------
 
 # Creates a "character" class, that can load in mulitple files.
 class Character:
@@ -56,20 +83,18 @@ class Character:
         return self.model.make_short_sentence(140)
 
 
+# lovecraft = Character()
+# lovecraft.create_bio("H.P. Lovecraft", "A xenophobic creepy writer.")
+# lovecraft.create_model_from_dir("character_texts/lovecraft")
+# lovecraft.speak_bio()
+# for i in range(5):
+#     print(">>>")
+#     lovecraft.speak_tweet()
 
-
-lovecraft = Character()
-lovecraft.create_bio("H.P. Lovecraft", "A xenophobic creepy writer.")
-lovecraft.create_model_from_dir("character_texts/lovecraft")
-lovecraft.speak_bio()
-for i in range(5):
-    print(">>>")
-    lovecraft.speak_tweet()
-
-gaiman = Character()
-gaiman.create_bio("Neil Gaiman", "An excellent, empathetic man and writer.")
-gaiman.create_model_from_dir("character_texts/gaiman")
-gaiman.speak_bio()
-for i in range(5):
-    print(">>>")
-    gaiman.speak_tweet()
+# gaiman = Character()
+# gaiman.create_bio("Neil Gaiman", "An excellent, empathetic man and writer.")
+# gaiman.create_model_from_dir("character_texts/gaiman")
+# gaiman.speak_bio()
+# for i in range(5):
+#     print(">>>")
+#     gaiman.speak_tweet()
