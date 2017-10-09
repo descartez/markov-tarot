@@ -50,6 +50,9 @@ class Character:
     def speak_tweet(self):
         print(self.model.make_short_sentence(140))
 
+    def return_tweet(self):
+        return self.model.make_short_sentence(140)
+
 lovecraft = Character()
 lovecraft.create_bio("H.P. Lovecraft", "A xenophobic creepy writer.")
 lovecraft.create_model_from_dir("character_texts/lovecraft")
