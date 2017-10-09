@@ -1,6 +1,20 @@
 import markovify
 import os
+import re
+import spacy
 
+# implements less naive language processing with spaCy
+nlp = spacy.load("en")
+
+class POSifiedText(markovify.Text):
+    def word_split(self, sentence):
+        return ["::".join((word.orth_, word.pos_)) for word in nlp(sentence)]
+
+    def word_join(self, words):
+        sentence = " ".join(word.split("::")[0] for word in words)
+        return sentence
+
+# Creates a "character" class, that can load in mulitple files.
 class Character:
     def __init__(self):
         self.name = ""
