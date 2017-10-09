@@ -87,9 +87,7 @@ lovecraft = Character()
 lovecraft.create_bio("H.P. Lovecraft", "A xenophobic creepy writer.")
 lovecraft.create_model_from_dir("character_texts/lovecraft")
 lovecraft.speak_bio()
-# for i in range(5):
-#     print(">>>")
-#     lovecraft.speak_tweet()
+
 tweet = lovecraft.return_tweet()
 print(tweet)
 api.update_status(tweet)
@@ -98,9 +96,7 @@ gaiman = Character()
 gaiman.create_bio("Neil Gaiman", "An excellent, empathetic man and writer.")
 gaiman.create_model_from_dir("character_texts/gaiman")
 gaiman.speak_bio()
-# for i in range(5):
-#     print(">>>")
-#     gaiman.speak_tweet()
+
 tweet = gaiman.return_tweet()
 print(tweet)
 api.update_status(tweet)
