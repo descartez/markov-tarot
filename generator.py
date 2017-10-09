@@ -1,4 +1,5 @@
 import markovify
+import os
 
 class Character:
     def __init__(self):
@@ -14,6 +15,18 @@ class Character:
             text = f.read()
         self.model = markovify.Text(text)
 
+    def create_model_from_dir(self, dir_path):
+        combined_model = None
+        for (dirpath, _, filenames) in os.walk(dir_path):
+            for filename in filenames:
+                with open(os.path.join(dirpath, filename)) as f:
+                    model = markovify.Text(f, retain_original=False)
+                    if combined_model:
+                        combined_model = markovify.combine(models=[combined_model, model])
+                    else:
+                        combined_model = model
+        self.model = combined_model
+
     def speak_bio(self):
         print("-"*15)
         print(self.name)
@@ -25,12 +38,12 @@ class Character:
 
 lovecraft = Character()
 lovecraft.create_bio("H.P. Lovecraft", "A xenophobic creepy writer.")
-lovecraft.create_model("hp_lovecraft_mountains_of_madness.txt")
+lovecraft.create_model_from_dir("character_texts/lovecraft")
 lovecraft.speak_bio()
 lovecraft.speak_tweet()
 
 gaiman = Character()
 gaiman.create_bio("Neil Gaiman", "An excellent, empathetic man and writer.")
-gaiman.create_model("neil_gaiman_click_clack.txt")
+gaiman.create_model_from_dir("character_texts/gaiman")
 gaiman.speak_bio()
 gaiman.speak_tweet()
